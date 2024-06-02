@@ -117,6 +117,9 @@
                 document.execCommand("copy");
                 alert("Copied the text: " + copyText.value);
             }
+	    document.addEventListener('contextmenu', function(e) {
+		  e.preventDefault();
+	   });
         </script>
         <div>
             <button type="button" onclick="Send()" id="btnSend">Send Command</button>
@@ -155,9 +158,4 @@
     </div>
 
 </body>
-<script>
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-</script>
 </html>
