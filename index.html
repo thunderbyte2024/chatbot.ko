@@ -120,6 +120,23 @@
 	    document.addEventListener('contextmenu', function(e) {
 		  e.preventDefault();
 	   });
+ 	    document.addEventListener('keydown', (e) => {
+	            if (e.keyCode === 123) { // F12
+	                e.preventDefault();
+	            }
+	            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
+	                e.preventDefault();
+	            }
+	            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { // Ctrl+Shift+C
+	                e.preventDefault();
+	            }
+	            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { // Ctrl+Shift+J
+	                e.preventDefault();
+	            }
+	            if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
+	                e.preventDefault();
+	            }
+             });
         </script>
         <div>
             <button type="button" onclick="Send()" id="btnSend">Send Command</button>
