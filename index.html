@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHUTTLEAI</title>
+    <script src="script.js"></script>
+  
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5035184988279329"
+     crossorigin="anonymous"></script>
+</head>
+<body onload="OnLoad()">
+    <style>
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        #idContainer {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        #txtOutput {
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 10px;
+        }
+        
+        label {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        
+        select {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 6px;
+        }
+        
+        #txtMsg {
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+        
+        #idText {
+            margin-top: 10px;
+        }
+
+        #clearButton {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #clearButton:hover {
+            background-color: darkred;
+        }
+        
+        #copyButton {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #copyButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+	
+
+    <div id="idContainer">
+	
+	    <textarea id="txtMsg" rows="5" wrap="soft" style="width: 98%; 
+         margin-left: 3px; margin-top: 6px" placeholder="Input Text"></textarea>
+
+        <div id="idText"></div>
+		
+        <textarea id="txtOutput" rows="15" style="margin-top: 10px; width: 100%;" 
+         placeholder="Output"></textarea>
+
+        <script>
+            function clearTextarea() {
+                document.getElementById('txtOutput').value = '';
+            }
+
+            function copyToClipboard() {
+                var copyText = document.getElementById("txtOutput");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                document.execCommand("copy");
+                alert("Copied the text: " + copyText.value);
+            }
+        </script>
+        <div>
+            <button type="button" onclick="Send()" id="btnSend">Send Command</button>
+            <button id="clearButton" onclick="clearTextarea()">Clear Output</button>
+            <button id="copyButton" onclick="copyToClipboard()">Copy Output</button>
+             
+            <label id="lblSpeak"><input id="chkSpeak" type="checkbox" 
+             onclick="SpeechToText()" />Listen</label>
+            <label id="lblMute"><input id="chkMute" type="checkbox" 
+             onclick="Mute(this.checked)"/>Mute</label>
+<br>
+            <select id="selModel">
+                <option value="shuttle-turbo">shuttle-turbo</option>
+                <option value="shuttle-2-turbo">shuttle-2-turbo</option>
+                <option value="gpt-3.5-turbo-0125">gpt-3.5-turbo-0125</option>
+                <option value="gpt-3.5-turbo-1106">gpt-3.5-turbo-1106</option>
+                <option value="gpt-4-0613">gpt-4-0613</option>
+            </select>
+
+            <select id="selLang" onchange="ChangeLang(this)">
+                <option value="en-US">English (United States)</option>
+                <option value="fr-FR">French (France)</option>
+                <option value="ru-RU">Russian (Russia)</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="es-ES">Spanish (Spain)</option>
+                <option value="de-DE">German (Germany)</option>
+                <option value="it-IT">Italian (Italy)</option>
+                <option value="pl-PL">Polish (Poland)</option>
+                <option value="nl-NL">Dutch (Netherlands)</option>
+            </select>
+
+            <select id="selVoices"></select>
+        </div>
+
+        
+    </div>
+
+</body>
+</html>
